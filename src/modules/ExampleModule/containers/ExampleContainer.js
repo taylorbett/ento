@@ -10,7 +10,7 @@ export class ExampleContainer extends React.Component {
         return (
             <React.Fragment>
                 <div className='example-container'>
-                    <p>Count: {this.props.count}</p>
+                    <p>Count: {this.props.count.data}</p>
                     <button onClick={() => {this.props.increment()}}>Increment</button>
                     <button onClick={() => {this.props.decrement()}}>Decrement</button>
                 </div>
