@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
 
 import * as CountActions from '../../../actions/countActions';
 
@@ -8,14 +9,25 @@ import HelloWorld from '../../../core/components/HelloWorld';
 
 export class ExampleContainer extends React.Component {
     render() {
-        console.log(React.version);
-        console.log('rerendering with', this.props);
+        const Button = styled.button`
+            height: 40px;
+            padding: 0px 6px;
+            border: none;
+            background: green;
+            margin-right: 6px;
+            color: white;
+        `;
+
+        const ButtonNegative = Button.extend`
+            background: red;
+        `;
+
         return (
             <React.Fragment>
                 <div className='example-container'>
                     <p>Count: {this.props.count.data}</p>
-                    <button onClick={() => {this.props.dispatch(CountActions.increment())}}>Increment</button>
-                    <button onClick={() => {this.props.dispatch(CountActions.decrement())}}>Decrement</button>
+                    <Button onClick={() => {this.props.dispatch(CountActions.increment())}}>Increment</Button>
+                    <ButtonNegative onClick={() => {this.props.dispatch(CountActions.decrement())}}>Decrement</ButtonNegative>
                 </div>
                 <HelloWorld />
             </React.Fragment>
