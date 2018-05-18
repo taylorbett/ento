@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as CountActions from '../../../actions/countActions';
 
 import HelloWorld from '../../../core/components/HelloWorld';
 
@@ -11,8 +14,8 @@ export class ExampleContainer extends React.Component {
             <React.Fragment>
                 <div className='example-container'>
                     <p>Count: {this.props.count.data}</p>
-                    <button onClick={() => {this.props.increment()}}>Increment</button>
-                    <button onClick={() => {this.props.decrement()}}>Decrement</button>
+                    <button onClick={() => {this.props.dispatch(CountActions.increment())}}>Increment</button>
+                    <button onClick={() => {this.props.dispatch(CountActions.decrement())}}>Decrement</button>
                 </div>
                 <HelloWorld />
             </React.Fragment>
@@ -28,8 +31,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        increment: () => dispatch({ type: 'INCREMENT' }),
-        decrement: () => dispatch({ type: 'DECREMENT' }),
+        actions: bindActionCreators(CountActions, dispatch),
+        dispatch,
     };
 }
 
