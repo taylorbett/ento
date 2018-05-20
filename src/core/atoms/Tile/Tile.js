@@ -1,13 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-export class Tile extends React.PureComponent {
+const Tile = styled.div`
+    display: {$props => $props.block ? 'block' : 'inline-block'};
+    border: 1px solid #e4e9ed;
+    border-radius: 4px;
+    background: #f8fafd;
+    text-align: left;
+    color: #1f1f24;
+    margin: 0 10px 10px 0;
+    position: relative;
+`;
+
+export class TileComponent extends React.PureComponent {
     render() {
         return (
-            <div className="tile">
-
-            </div>
+            <Tile>
+                {this.props.children}
+            </Tile>
         );
     }
 }
 
-export default Tile;
+Tile.defaultProps = {
+    children: null,
+    block: false,
+}
+
+Tile.propTypes = {
+    children: PropTypes.node,
+    block: PropTypes.bool,
+};
+
+export default TileComponent;

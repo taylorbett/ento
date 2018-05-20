@@ -1,24 +1,59 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Shift from '../../core/molecules/Shift';
+
 export class ShiftDemo extends React.Component {
     render() {
-        const Button = styled.button`
-            height: 40px;
-            padding: 0px 6px;
-            border: none;
-            background: green;
-            margin-right: 6px;
-            color: white;
-        `;
+        const noAlerts = {
+            critical: [],
+            low: [],      
+        };
 
-        const ButtonNegative = Button.extend`
-            background: red;
-        `;
+        const singleAlert = {
+            critical: [
+                'Test alert'
+            ],
+            low: [],      
+        };
 
+        const someAlerts = {
+            critical: [
+                'Test alert',
+                'Test alert',
+                'Test alert',
+            ],
+            low: [
+                'Test alert',
+            ],      
+        };
         return (
             <React.Fragment>
-                Hello
+                <Shift
+                    startTime={"9:00am"}
+                    endTime={"5:00pm"}
+                    role={"Head chef"}
+                    alerts={noAlerts}
+                />
+                <Shift
+                    startTime={"9:00am"}
+                    endTime={"5:00pm"}
+                    role={"Head chef"}
+                    alerts={singleAlert}
+                />
+                <Shift
+                    startTime={"9:00am"}
+                    endTime={"5:00pm"}
+                    role={"Head chef"}
+                    alerts={someAlerts}
+                />
+                <Shift
+                    startTime={"9:00am"}
+                    endTime={"5:00pm"}
+                    role={"Head chef"}
+                    alerts={someAlerts}
+                    long
+                />
             </React.Fragment>
         )
     }
