@@ -11,6 +11,7 @@ const Tile = styled.div`
     color: #1f1f24;
     margin: 0 10px 10px 0;
     position: relative;
+    overflow: hidden;
 `;
 
 export class TileComponent extends React.PureComponent {

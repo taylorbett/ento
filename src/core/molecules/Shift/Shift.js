@@ -27,11 +27,17 @@ const AlertsContainer = styled.div`
     position: absolute;
     right: 0;
     top: 0;
+    transition: transform 150ms ease-out;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 0.65em;
-    max-width: 128px;
+    width: 128px;
     margin: -1px -1px 0 0;
+    transform: ${props => props.revealed ? 'translateX(0px)' : 'translateX(119px)'};
+    
+    &:hover {
+        transform: ${props => props.revealed ? 'translateX(0px)' : 'translateX(114px)'};
+    }
 `;
 
 const Alert = styled.div`
@@ -58,27 +64,26 @@ export class ShiftComponent extends React.Component {
         super(props);
 
         this.state = {
-            revealed: this.props.revealed,
+            revealed: false,
         };
     }
 
     handleClick() {
-        console.log('handleClick!');
         this.setState({
             revealed: !this.state.revealed,
         });
     }
     
     render() {
-        console.log('rendering shift with', this.props)
+        console.log('rendering shift with', this.props, this.state);
         return (
             <Tile block={this.props.long}>
-                <Shift revealed={this.state.revealed} onClick={() => this.handleClick()}>
+                <Shift revealed={this.state.revealed}>
                     <ShiftTime>{this.props.startTime} - {this.props.endTime}</ShiftTime>
-                    <ShiftText>{this.props.role}</ShiftText>
-                    <AlertsContainer>
-                        {this.props.alerts.critical.length ? <CriticalAlert>{this.props.alerts.critical.length} critical alerts</CriticalAlert> : null}
-                        {this.props.alerts.low.length ? <LowAlert>{this.props.alerts.low.length} low alerts</LowAlert> : null}
+                    <ShiftText>{this.props.roleTitle}</ShiftText>
+                    <AlertsContainer revealed={this.state.revealed} onClick={() => this.handleClick()}>
+                        {this.props.alerts.critical.length ? <CriticalAlert>{this.state.revealed ? `${this.props.alerts.critical.length} critical alerts` : null}</CriticalAlert> : null}
+                        {this.props.alerts.low.length ? <LowAlert>{this.state.revealed ? `${this.props.alerts.low.length} low alerts` : null}</LowAlert> : null}
                     </AlertsContainer>
                 </Shift>
             </Tile>
@@ -87,12 +92,14 @@ export class ShiftComponent extends React.Component {
 }
 
 ShiftComponent.defaultProps = {
-    revealed: false,
+    roleTitle: '',
     long: false,
 }
 
 ShiftComponent.propTypes = {
-    revealed: PropTypes.bool,
+    startTime: PropTypes.string.isRequired,
+    endTime: PropTypes.string.isRequired,
+    roleTitle: PropTypes.string,
     long: PropTypes.bool,
     alerts: PropTypes.shape({
         critical: PropTypes.arrayOf(PropTypes.string),

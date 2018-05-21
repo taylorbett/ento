@@ -31,25 +31,25 @@ export class ShiftDemo extends React.Component {
                 <Shift
                     startTime={"9:00am"}
                     endTime={"5:00pm"}
-                    role={"Head chef"}
+                    roleTitle={"Head chef"}
                     alerts={noAlerts}
                 />
                 <Shift
                     startTime={"9:00am"}
                     endTime={"5:00pm"}
-                    role={"Head chef"}
+                    roleTitle={"Head chef"}
                     alerts={singleAlert}
                 />
                 <Shift
                     startTime={"9:00am"}
                     endTime={"5:00pm"}
-                    role={"Head chef"}
+                    roleTitle={"Head chef"}
                     alerts={someAlerts}
                 />
                 <Shift
                     startTime={"9:00am"}
                     endTime={"5:00pm"}
-                    role={"Head chef"}
+                    roleTitle={"Head chef"}
                     alerts={someAlerts}
                     long
                 />
