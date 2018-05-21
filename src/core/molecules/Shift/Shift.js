@@ -6,7 +6,7 @@ import Tile from '../../atoms/Tile';
 
 const Shift = styled.div`
     width: ${props => props.long ? '' : '164px'};
-    min-width: 125px;
+    min-width: 133px;
     height: 50px;
     padding: 8px 10px;
     color: ${props => props.revealed ? '#727375' : 'inherit'};
@@ -28,18 +28,18 @@ const AlertsContainer = styled.div`
     height: 100%;
     position: absolute;
     top: 0;
+    right: 0;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 0.65em;
     width: 128px;
     margin-left: -8px;
-    transition: left 150ms ease-out, margin-left 100ms ease-out;
-    // transform: ${props => props.revealed ? 'translateX(0px)' : 'translateX(119px)'};
-    left: ${props => props.revealed ? '44px' : '100%'};
+    transition: transform 150ms ease-out;
+    transform: ${props => props.revealed ? 'translateX(0px)' : 'translateX(119px)'};
     
     &:hover {
-        margin-left: ${props => props.revealed ? '-8px' : '-16px'};
+        transform: ${props => props.revealed ? 'translateX(0px)' : 'translateX(114px)'};
     }
 `;
 
