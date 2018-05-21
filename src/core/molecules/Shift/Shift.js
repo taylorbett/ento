@@ -23,6 +23,8 @@ const ShiftTime = ShiftText.extend`
 `;
 
 const AlertsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     height: 100%;
     position: absolute;
     right: 0;
@@ -42,9 +44,9 @@ const AlertsContainer = styled.div`
 
 const Alert = styled.div`
     border-radius: 0 4px 4px 0;
-    height: 26px;
     padding: 0 8px;
     line-height: 26px;
+    flex-grow: 1;
 `;
 
 const CriticalAlert = Alert.extend`
@@ -76,14 +78,16 @@ export class ShiftComponent extends React.Component {
     
     render() {
         console.log('rendering shift with', this.props, this.state);
+        const critLen = this.props.alerts.critical.length;
+        const lowLen = this.props.alerts.low.length;
         return (
             <Tile block={this.props.long}>
                 <Shift revealed={this.state.revealed}>
                     <ShiftTime>{this.props.startTime} - {this.props.endTime}</ShiftTime>
                     <ShiftText>{this.props.roleTitle}</ShiftText>
                     <AlertsContainer revealed={this.state.revealed} onClick={() => this.handleClick()}>
-                        {this.props.alerts.critical.length ? <CriticalAlert>{this.state.revealed ? `${this.props.alerts.critical.length} critical alerts` : null}</CriticalAlert> : null}
-                        {this.props.alerts.low.length ? <LowAlert>{this.state.revealed ? `${this.props.alerts.low.length} low alerts` : null}</LowAlert> : null}
+                        {critLen ? <CriticalAlert>{this.state.revealed ? `${critLen} critical alert${critLen > 1 ? 's' : ''}` : null}</CriticalAlert> : null}
+                        {lowLen ? <LowAlert>{this.state.revealed ? `${lowLen} low alert${lowLen > 1 ? 's' : ''}` : null}</LowAlert> : null}
                     </AlertsContainer>
                 </Shift>
             </Tile>

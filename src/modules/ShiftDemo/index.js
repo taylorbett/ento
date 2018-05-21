@@ -9,11 +9,18 @@ export class ShiftDemo extends React.Component {
             low: [],      
         };
 
-        const singleAlert = {
+        const singleCritical = {
             critical: [
                 'Test alert'
             ],
             low: [],      
+        };
+
+        const singleLow = {
+            critical: [],
+            low: [
+                'Test alert'
+            ],      
         };
 
         const someAlerts = {
@@ -38,7 +45,13 @@ export class ShiftDemo extends React.Component {
                     startTime={"9:00am"}
                     endTime={"5:00pm"}
                     roleTitle={"Head chef"}
-                    alerts={singleAlert}
+                    alerts={singleCritical}
+                />
+                <Shift
+                    startTime={"9:00am"}
+                    endTime={"5:00pm"}
+                    roleTitle={"Head chef"}
+                    alerts={singleLow}
                 />
                 <Shift
                     startTime={"9:00am"}
