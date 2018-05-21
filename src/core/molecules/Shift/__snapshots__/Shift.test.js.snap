@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shift renders correctly 1`] = `
+<div
+  className="sc-bdVaJa cILbZK"
+>
+  <div
+    className="sc-bwzfXH fDYiiL"
+  >
+    <p
+      className="sc-bxivhb pSNjo"
+    >
+      9:00am
+       - 
+      5:00pm
+    </p>
+    <p
+      className="sc-htpNat gqSTSS"
+    >
+      Head chef
+    </p>
+    <div
+      className="sc-ifAKCX dKpYyy"
+      onClick={[Function]}
+    >
+      <div
+        className="sc-bZQynM eCFUZb"
+      />
+      <div
+        className="sc-gzVnrw fxtiFH"
+      />
+    </div>
+  </div>
+</div>
+`;
