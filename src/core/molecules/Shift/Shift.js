@@ -65,8 +65,6 @@ const LowAlert = Alert.extend`
     color: #1f1f24;
 `;
 
-// MUTED TEXT COLOUR #727375
-
 export class ShiftComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -83,7 +81,6 @@ export class ShiftComponent extends React.Component {
     }
     
     render() {
-        // console.log('rendering shift with', this.props, this.state);
         const critLen = this.props.alerts.critical.length;
         const lowLen = this.props.alerts.low.length;
         return (

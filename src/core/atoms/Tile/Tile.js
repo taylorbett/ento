@@ -16,7 +16,6 @@ const Tile = styled.div`
 
 export class TileComponent extends React.PureComponent {
     render() {
-        console.log('rendering tile with', this.props);
         return (
             <Tile {...this.props}>
                 {this.props.children}
