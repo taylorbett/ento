@@ -34,7 +34,6 @@ const AlertsContainer = styled.div`
     font-weight: bold;
     font-size: 0.65em;
     width: 128px;
-    margin: -1px -1px 0 0;
     transform: ${props => props.revealed ? 'translateX(0px)' : 'translateX(119px)'};
     
     &:hover {
@@ -43,9 +42,11 @@ const AlertsContainer = styled.div`
 `;
 
 const Alert = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border-radius: 0 4px 4px 0;
     padding: 0 8px;
-    line-height: 26px;
     flex-grow: 1;
 `;
 
@@ -86,8 +87,16 @@ export class ShiftComponent extends React.Component {
                     <ShiftTime>{this.props.startTime} - {this.props.endTime}</ShiftTime>
                     <ShiftText>{this.props.roleTitle}</ShiftText>
                     <AlertsContainer revealed={this.state.revealed} onClick={() => this.handleClick()}>
-                        {critLen ? <CriticalAlert>{this.state.revealed ? `${critLen} critical alert${critLen > 1 ? 's' : ''}` : null}</CriticalAlert> : null}
-                        {lowLen ? <LowAlert>{this.state.revealed ? `${lowLen} low alert${lowLen > 1 ? 's' : ''}` : null}</LowAlert> : null}
+                        {critLen ?
+                            <CriticalAlert>
+                                {this.state.revealed ? `${critLen} critical alert${critLen > 1 ? 's' : ''}` : null}
+                            </CriticalAlert> : null
+                        }
+                        {lowLen ?
+                            <LowAlert>
+                                {this.state.revealed ? `${lowLen} low alert${lowLen > 1 ? 's' : ''}` : null}
+                            </LowAlert> : null
+                        }
                     </AlertsContainer>
                 </Shift>
             </Tile>
