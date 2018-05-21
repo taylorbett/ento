@@ -1,6 +1,16 @@
 import React from 'react';
-
+import styled from 'styled-components';
 import Shift from '../../core/molecules/Shift';
+
+const ShiftDemoContainer = styled.div`
+    margin: 0 20px;
+`;
+
+const DemoHeading = styled.p`
+    color: #727375;
+    margin-bottom: 20px;
+    font-size: 0.7em;
+`;
 
 export class ShiftDemo extends React.Component {
     render() {
@@ -34,39 +44,60 @@ export class ShiftDemo extends React.Component {
             ],      
         };
         return (
-            <React.Fragment>
-                <Shift
-                    startTime={"9:00am"}
-                    endTime={"5:00pm"}
-                    roleTitle={"Head chef"}
-                    alerts={noAlerts}
-                />
-                <Shift
-                    startTime={"9:00am"}
-                    endTime={"5:00pm"}
-                    roleTitle={"Head chef"}
-                    alerts={singleCritical}
-                />
-                <Shift
-                    startTime={"9:00am"}
-                    endTime={"5:00pm"}
-                    roleTitle={"Head chef"}
-                    alerts={singleLow}
-                />
-                <Shift
-                    startTime={"9:00am"}
-                    endTime={"5:00pm"}
-                    roleTitle={"Head chef"}
-                    alerts={someAlerts}
-                />
-                <Shift
-                    startTime={"9:00am"}
-                    endTime={"5:00pm"}
-                    roleTitle={"Head chef"}
-                    alerts={someAlerts}
-                    long
-                />
-            </React.Fragment>
+            <ShiftDemoContainer>
+                <div className="row">
+                    <div className="col col-lg-3">
+                        <DemoHeading>Normal</DemoHeading>
+                        <Shift
+                            startTime={"9:00am"}
+                            endTime={"5:00pm"}
+                            roleTitle={"Head chef"}
+                            alerts={noAlerts}
+                        />
+                        <DemoHeading>Single Low Alert</DemoHeading>
+                        <Shift
+                            startTime={"9:00am"}
+                            endTime={"5:00pm"}
+                            roleTitle={"Head chef"}
+                            alerts={singleLow}
+                        />
+                    </div>
+                    <div className="col col-lg-3">
+                        <DemoHeading>Single Critical Alert</DemoHeading>
+                        <Shift
+                            startTime={"9:00am"}
+                            endTime={"5:00pm"}
+                            roleTitle={"Head chef"}
+                            alerts={singleCritical}
+                        />
+                        <DemoHeading>Multiple Alerts</DemoHeading>
+                        <Shift
+                            startTime={"9:00am"}
+                            endTime={"5:00pm"}
+                            roleTitle={"Head chef"}
+                            alerts={someAlerts}
+                        />
+                    </div>
+                    <div className="col col-lg-6">
+                        <DemoHeading>Normal Long</DemoHeading>
+                        <Shift
+                            startTime={"9:00am"}
+                            endTime={"5:00pm"}
+                            roleTitle={"Head chef"}
+                            alerts={noAlerts}
+                            long
+                        />
+                        <DemoHeading>Multiple Alerts Long</DemoHeading>
+                        <Shift
+                            startTime={"9:00am"}
+                            endTime={"5:00pm"}
+                            roleTitle={"Head chef"}
+                            alerts={someAlerts}
+                            long
+                        />
+                    </div>
+                </div>
+            </ShiftDemoContainer>
         )
     }
 }
