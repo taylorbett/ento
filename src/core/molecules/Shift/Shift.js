@@ -6,7 +6,7 @@ import Tile from '../../atoms/Tile';
 
 const Shift = styled.div`
     width: ${props => props.long ? '' : '164px'};
-    min-width: 133px;
+    min-width: 125px;
     height: 50px;
     padding: 8px 10px;
     color: ${props => props.revealed ? '#727375' : 'inherit'};
