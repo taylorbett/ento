@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import Tile from '../../atoms/Tile';
 
 const Shift = styled.div`
-    width: ${props => props.long ? '100%' : '144px'};
-    height: 34px;
+    width: ${props => props.long ? '' : '164px'};
+    min-width: 120px;
+    height: 50px;
     padding: 8px 10px;
-    cursor: pointer;
     color: ${props => props.revealed ? '#727375' : 'inherit'};
 `;
 
@@ -29,11 +29,12 @@ const AlertsContainer = styled.div`
     position: absolute;
     right: 0;
     top: 0;
-    transition: transform 150ms ease-out;
+    cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 0.65em;
     width: 128px;
+    transition: transform 150ms ease-out;
     transform: ${props => props.revealed ? 'translateX(0px)' : 'translateX(119px)'};
     
     &:hover {
@@ -48,6 +49,9 @@ const Alert = styled.div`
     border-radius: 0 4px 4px 0;
     padding: 0 8px;
     flex-grow: 1;
+    -moz-box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.2);
+    -webkit-box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.2);
+    box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.2);
 `;
 
 const CriticalAlert = Alert.extend`
@@ -78,12 +82,12 @@ export class ShiftComponent extends React.Component {
     }
     
     render() {
-        console.log('rendering shift with', this.props, this.state);
+        // console.log('rendering shift with', this.props, this.state);
         const critLen = this.props.alerts.critical.length;
         const lowLen = this.props.alerts.low.length;
         return (
-            <Tile block={this.props.long}>
-                <Shift revealed={this.state.revealed}>
+            <Tile shrinkWrap={!this.props.long} clickable>
+                <Shift {...this.props} {...this.state}>
                     <ShiftTime>{this.props.startTime} - {this.props.endTime}</ShiftTime>
                     <ShiftText>{this.props.roleTitle}</ShiftText>
                     <AlertsContainer revealed={this.state.revealed} onClick={() => this.handleClick()}>
